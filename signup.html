@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Sign Up</title>
+
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/index.css" rel="stylesheet">
+	
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="index.php"><img src="img/logo.png"</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		          	<li class="dropdown-submenu">
+		          	    <a tabindex="-1" href="#">By Brand</a>
+		          	    <ul class="dropdown-menu">
+		          	        <li class="dropdown-submenu"></li>
+		          	        <li><a href="#">Bell</a></li>
+		          	        <li><a href="#">BookChrome</a></li>
+		          	        <li><a href="#">Carebook</a></li>
+		          	        <li><a href="#">Orange</a></li>
+		          	        <li><a href="#">PH</a></li>
+		          	        <li><a href="#">Yons</a></li>
+		          	    </ul>
+		          	</li>
+		          </ul>
+		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Find a Store <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		          	<li><a href="#">Liguanea</a></li>
+		          	<li><a href="#">HWT</a></li>
+		          	<li><a href="#">Manor Park</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		      <form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+		        <button type="submit" class="btn btn-default">Search</button>
+		      </form>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#" id="cart"><img src="img/cart.png"></a></li>
+		        <li class="dropdown">
+		          <a href="signin.html">Sign In</a>
+		          <!--<ul class="dropdown-menu" role="menu">-->
+		          <!--  <li><a href="#">My Account</a></li>-->
+		          <!--  <li class="divider"></li>-->
+		          <!--  <li><a href="#">Sign Out</a></li>-->
+		          <!--</ul>-->
+		        </li>
+		        <li><a href="signup.html">Sign Up</a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+	<div class="container">
+	  <h2 class="page_title">Sign Up to shop at CompuStore!</h2>
+	  
+	  <form role="form" method="POST" action="../account_creation.php">
+	  	<div class="form-group">
+	      <label for="firstname">First Name:</label>
+	      <input type="text" class="form-control" name="firstName" id="username" placeholder="Enter first name">
+	    </div>
+	    <div class="form-group">
+	      <label for="lastname">Last Name:</label>
+	      <input type="text" class="form-control" name="lastName" id="username" placeholder="Enter last name">
+	    </div>
+	    <div class="form-group">
+	      <label for="username">Username:</label>
+	      <input type="text" class="form-control" name="username" id="username" placeholder="Enter a username">
+	    </div>
+	    <div class="form-group">
+	      <label for="email">Email:</label>
+	      <input type="text" class="form-control" name="email" id="username" placeholder="Enter email">
+	    </div>
+	    <div class="form-group">
+	      <label for="phone">Phone Number:</label>
+	      <input type="text" class="form-control" name="phone" id="username" placeholder="Format 555-5555">
+	    </div>
+	    <div class="form-group">
+	      <label for="card">Credit Card Number:</label>
+	      <input type="text" class="form-control" name="cardnumber" id="card" placeholder="Enter credit card #">
+	    </div>
+	    <div class="form-group">
+	      <label for="pwd">Password:</label>
+	      <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter password">
+	    </div>
+	    <button type="submit" class="btn btn-primary raised" name="submit">Sign Up</button>
+	  </form>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+

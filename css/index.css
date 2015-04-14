@@ -1,0 +1,128 @@
+body {
+	font-family: "Helvetica neue",Helvetica,Verdana,Sans-serif;
+}
+
+.page_title {
+	color: #4285F4;
+	/*margin-left: 100px;*/
+}
+
+/*#list_items {
+	margin: 0 200px;
+}*/
+
+#product_image {
+	height: 300px;
+	width: 400px;
+	margin-left: 50px;
+}
+
+.product {
+	margin-top: 30px;
+	border-bottom: 1px solid rgb(236, 236, 236);
+	padding-bottom: 20px;
+}
+
+/*.details {
+	position: relative;
+	float: right;
+	width: 400px;
+	margin-left: 80px;
+}*/
+
+p {
+	font-size: 18px;
+}
+
+hr {
+	border-color: rgb(242, 242, 242); 
+}
+
+#price {
+	color: #e81919;
+	padding-top: 5px;
+}
+
+.navbar-brand {
+	padding: 5px 15px;
+}
+
+.btn-primary.raised {
+	box-shadow: 0 3px 0 0 #007299;
+	outline: none;
+}
+
+.btn-primary.raised:active, .btn-primary.raised.active {
+    background: #33a6cc;
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+    outline: none;
+}
+
+#cart {
+	padding: 9px 0;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+.navbar-form .form-control {
+	width: 350px;
+}
+
+#sign_in {
+    border: none;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.quantity{
+    text-align: center;
+}
