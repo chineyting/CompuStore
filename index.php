@@ -129,8 +129,8 @@
 		<p id="price"><strong>Price:</strong> $'.$row['product_price'].'</p>
 		<p><strong>Brand:</strong> '.$row['product_brand'].'</p>
 		<p><strong>Serial Number:</strong> '.$row['serial_num'].'</p>
-		<a href="/productpage.php?serial='.$row['serial_num'].' "><button type="button" class="btn btn-primary raised">Buy Now</button></a>
-		<button type="button" class="btn btn-primary raised">Add to Cart</button>
+		<a href="/productpage.php?serial='.$row['serial_num'].' "><button type="button" class="btn btn-primary">Buy Now</button></a>
+		<button type="button" class="btn btn-primary">Add to Cart</button>
 		</div>
 		</div>';
 	}

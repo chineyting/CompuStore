@@ -12,7 +12,7 @@
 
 	$SERIAL = $_POST["serial"];
 	$QUANTITY = $_POST["quantity"];
-	
+	echo $QUANTITY;
 	
 	$branchquery = "call max_branch('$SERIAL');";
     $response = @mysqli_query($dbc, $branchquery);
@@ -50,12 +50,14 @@
 	OR die('Could not connect to MySQL: ' .
 	mysqli_connect_error());
  
-    mysqli_query($dbc, $updateQuery) OR  die("Upsate fail:".mysqli_error($dbc));
+    mysqli_query($dbc, $updateQuery) OR  die("Update fail:".mysqli_error($dbc));
     //     echo mysql_errno();
     // echo mysql_error();
     
     
     mysqli_close($dbc);
+    
+    
     
     
    

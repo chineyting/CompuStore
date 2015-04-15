@@ -163,8 +163,8 @@
 <div>
 <h1>Order</h1>
 <form method = "POST" action = "buyitem.php" id="orderform" name="orderform">
-	<select id="laptopNumber" name="laptopNumber" onchange="calculateTotal()">
-		<option value="1">1</option>
+	<select id="laptopNumber" name="quantity" onchange="calculateTotal()">
+		<option selected="selected" value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
 	</select>
@@ -173,7 +173,7 @@
 	<p>Quantity</p>
 	<p id="total_cost"></p>
 	
-	<button class="btn btn-primary raised" type="submit" name="submit">Confirm Order</button>
+	<button class="btn btn-primary" type="submit" name="submit">Confirm Order</button>
 </form>
 </div>
 </div>
