@@ -22,6 +22,7 @@
 	$response = @mysqli_query($dbc, $usernameQuery);
 	if (mysqli_num_rows($response) >0) {
 		echo "That username already exists. Please try again";
+		echo '<a href="/signup.html"><button>Back to form </button></a>';
 	}else{
 
 		$response2 = @mysqli_query($dbc, $Insertquery);
@@ -31,6 +32,7 @@
 			$response3 = @mysqli_query($dbc, $accoutQuery);
 			if ($response3) {
 				echo "Account created";
+				echo '<a href="/index.html"><button>Home</button></a>';
 			}else{
 				echo "Something went wrong";
 			}

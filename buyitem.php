@@ -51,8 +51,8 @@
 	mysqli_connect_error());
  
     mysqli_query($dbc, $updateQuery) OR  die("Update fail:".mysqli_error($dbc));
-    //     echo mysql_errno();
-    // echo mysql_error();
+        echo mysql_errno();
+    echo mysql_error();
     
     
     mysqli_close($dbc);

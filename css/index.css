@@ -126,3 +126,28 @@ hr {
 .quantity{
     text-align: center;
 }
+
+#total_cost {
+    padding-top: 10px;
+}
+
+.product_image {
+    transition: all .2s ease-in-out; 
+}
+
+.product_image:hover {
+    transform: scale(1.1);
+}
+
+.trackNum {
+    color: #FF9C18;
+}
+
+.quan {
+    padding-bottom: 10px;
+}
+
+.btn-lg {
+    background-color: #337ab7;
+    color: white;
+}

@@ -6,7 +6,7 @@
 	DEFINE ('DB_PORT', '3306');
 	session_start();
 
-	$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT)
+	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT)
 	OR die('Could not connect to MySQL: ' .
 	mysqli_connect_error());
 
@@ -14,7 +14,7 @@
 	$PASSWORD = $_POST["password"];
 	
 	$passwordQuery = "Select * From Account where username = '$USERNAME' AND password = '$PASSWORD'";
-	$response = @mysqli_query($dbc, $passwordQuery);
+	$response = mysqli_query($dbc, $passwordQuery);
 	
 	if (mysqli_num_rows($response) >0) {
 		// echo "Log In Succesful";

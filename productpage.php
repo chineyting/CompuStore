@@ -49,11 +49,11 @@
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Find a Store <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		          	<li><a href="#">Liguanea</a></li>
-		          	<li><a href="#">HWT</a></li>
-		          	<li><a href="#">Manor Park</a></li>
+		          	<li><a href="branch_sales.php">Branch Sales</a></li>
+		          	<li><a href="customer_spending.php">Customer Spending</a></li>
+		          	<li><a href="top_model.php">Top Models</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -101,7 +101,8 @@
 	mysqli_connect_error());
 	
 	$SERIAL = $_GET["serial"];
-	
+	$picture= $_GET["picture"];
+	$rating= $_GET["rating"];
 	
 	$itemQuery = "SELECT * from Product where serial_num = '$SERIAL';";
 
@@ -110,11 +111,10 @@
 	
 	while($row = mysqli_fetch_array($response)){
 	
-    	$picture = rand(1,10);
-    	$rating = rand(6,11);
+    
     	$PRICE = $row['product_price'];
     	echo '
-    	<img src="/img/'.$picture.'.jpg" class="col-md-6" id="product_image">
+    	<img src="/img/'.$picture.'.jpg" class="col-md-6 product_image" id="product_image">
     	<div class="col-md-5 col-md-offset-1 details">
     	<h2>'.$row['product_name'].' Laptop</h2>
     	<img src="/img/'.$rating.'.png">
@@ -123,57 +123,86 @@
     	<p><strong>Serial Number:</strong> '.$row['serial_num'].'</p>
     	</div>';
 	}
+	mysqli_close($dbc);
 	
 ?>
 </div>
 <div class="col-md-5 col-md-offset-1">
     <h2>Available at branches:</h2>
     <?php
-    
-    $availableQuery  = "call branch_available('$SERIAL');" ;
-    $availableResponse = @mysqli_query($dbc, $availableQuery );
-    if (mysqli_num_rows($availableResponse) >0) {
-        echo '<table class="table-condensed">
-        <thead>
-        <tr>
-		<th>Branch</th>
-		<th>Quantity</th>
-	    </tr>
-	    </thead>';
-	    while($row = mysqli_fetch_array($availableResponse)){
-	        echo "<tbody>
-	        <tr>
-    		<td>".$row['branch_name']."</td>
-    		<td>".$row['quantity']."</td>
-    	    </tr>
-    	    </tbody>";
+	    $query = "SELECT serial_num, quantity FROM Warehouse Where serial_num = '$SERIAL'";
+	    $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, "store1", DB_PORT)
+	    OR die('Could not connect to MySQL: ' .
+		mysqli_connect_error());
+	    $response = mysqli_query($dbc, $query);
+	    while($row = mysqli_fetch_array($response)){
+	    	$store1num = $row["quantity"];
 	    }
-	    echo "</table>";
-	}else{
+	    mysqli_close($dbc);
+
+	    $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, "store2", DB_PORT)
+	    OR die('Could not connect to MySQL: ' .
+		mysqli_connect_error());
+	    $response = mysqli_query($dbc, $query);
+	    while($row = mysqli_fetch_array($response)){
+	    	$store2num = $row["quantity"];
+	    }
+	    mysqli_close($dbc);
+
+	    $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, "store3", DB_PORT)
+	    OR die('Could not connect to MySQL: ' .
+		mysqli_connect_error());
+	    $response = mysqli_query($dbc, $query);
+	    while($row = mysqli_fetch_array($response)){
+	    	$store3num = $row["quantity"];
+	    }
+	    mysqli_close($dbc);
+	    echo "<ul>";
+	    if ($store1num>0) {
+	    	echo "<li>Compustore U.S.  :".$store1num."</li>";
+	    }if ($store2num>0) {
+	    	echo "<li>Compustore Jamaica :".$store2num."</li>";
+	    }if ($store3num>0) {
+	    	echo "<li> Compustore Trinidad and Tobago :".$store3num."</li>";
+	    }
+
+	    echo "</ul>";
 	    
-	    echo"<p>The item is not available at any locations</p>";
-	}
-    
-    mysqli_close($dbc);
+	    
+	   	$max = $store1num;
+	   	if($store2num>$max){
+	   		$max = $store2num;
+	   	}if($store3num>$max){
+	   		$max = $store3num;
+	   	}
+	   	if($max == $store1num ){
+	   		$buyingbranch = "1";
+	   	}if($max == $store2num ){
+	   		$buyingbranch = "2";
+	   	}if($max == $store3num ){
+	   		$buyingbranch = "3";
+	   	}
+	   	
     ?>
     
 </div>
 
 
-<div>
+<div class="col-md-5">
 <h1>Order</h1>
-<form method = "POST" action = "buyitem.php" id="orderform" name="orderform">
+<form method = "POST" action = "buyconfirm.php" id="orderform" name="orderform">
+	<div class="quan">
+	<p>Quantity</p>
 	<select id="laptopNumber" name="quantity" onchange="calculateTotal()">
 		<option selected="selected" value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
 	</select>
-	<input type="text" name="username" value= <?php echo '"'.$_SESSION["username"].'"'?>   >
-	<input type="text" name="serial" value= <?php echo '"'.$SERIAL.'"'?>   >
-	<p>Quantity</p>
-	<p id="total_cost"></p>
-	
-	<button class="btn btn-primary" type="submit" name="submit">Confirm Order</button>
+	</div>
+	<input type="hidden" name="serial" value= <?php echo '"'.$SERIAL.'"'?>   >
+	<input type="hidden" name="branch_id" value= <?php echo '"'.$buyingbranch.'"'?>   >
+	<!--<p id="total_cost"> Total Cost:</p>-->
+	<button class="btn btn-lg" type="submit"  <?php if($max ==0 || empty($_SESSION["username"]) ){echo "disabled";} ?>  name="submit">Confirm Order</button>
 </form>
 </div>
 </div>

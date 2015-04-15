@@ -48,11 +48,11 @@
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Find a Store <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		          	<li><a href="#">Liguanea</a></li>
-		          	<li><a href="#">HWT</a></li>
-		          	<li><a href="#">Manor Park</a></li>
+		          	<li><a href="branch_sales.php">Branch Sales</a></li>
+		          	<li><a href="customer_spending.php">Customer Spending</a></li>
+		          	<li><a href="top_model.php">Top Models</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -129,10 +129,12 @@
 		<p id="price"><strong>Price:</strong> $'.$row['product_price'].'</p>
 		<p><strong>Brand:</strong> '.$row['product_brand'].'</p>
 		<p><strong>Serial Number:</strong> '.$row['serial_num'].'</p>
-		<a href="/productpage.php?serial='.$row['serial_num'].' "><button type="button" class="btn btn-primary">Buy Now</button></a>
+		<a href="/productpage.php?serial='.$row['serial_num'].'&picture='.$picture.'&rating='.$rating.' "><button type="button" class="btn btn-primary">Buy Now</button></a>
 		<button type="button" class="btn btn-primary">Add to Cart</button>
 		</div>
 		</div>';
+
+	
 	}
 
 	echo '</div>';
@@ -149,6 +151,9 @@
 
 	// Close connection to the database
 	mysqli_close($dbc);
+
+
+
 
 ?>
 
